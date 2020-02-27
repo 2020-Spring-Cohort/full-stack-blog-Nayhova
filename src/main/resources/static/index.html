@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang= "en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+    <meta name=-"viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title> All Blogs</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <img class="header-image" src="img/header.png" alt="header">
+    <div id="nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="allblogs.html">All Entrys</a></li>
+            <li><a href="hashtags.html">All Hashtags</a></li>
+            <li><a href="create.html">Create Entry</a></li>
+        </ul>
+    </div>
+<div id="content">
+    <div id="feature">
+        <p th:each="category:${/categories}" class="category-title" ><a th:text="${category.genre}" th:href="@{'/categories/'+ ${category.genre}}">Nintendo</p>
+    </div>
+    <div class="article column1">
+        <p>Super Nintendo</p>
+    </div>
+    <div class="article column2">
+        <p>Sega Dreamcast</p>
+    </div>
+    <div class="article column3">
+        <p>Sony Playstation</p>
+    </div>
+</div>
+
+
+</body>
