@@ -21,12 +21,13 @@ public class BlogControllerTest {
     private BlogRepository mockStorage;
     private Game testGame;
     private Blog blogUndertest;
+    private HashtagRepository hashTagRepo;
 
     @BeforeEach
     public void setUp(){
         mockModel = mock(Model.class);
         mockStorage = mock(BlogRepository.class);
-        underTest = new BlogController(mockStorage);
+        underTest = new BlogController(mockStorage, hashTagRepo);
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
         Category fakeCategory = new Category("Dreamcast", "image");
         testGame = new Game("Sonic", fakeCategory);
@@ -36,7 +37,7 @@ public class BlogControllerTest {
     public void shouldFindBlogEndpoint(){
         when(mockStorage.findById(1L)).thenReturn(Optional.of(blogUndertest));
         String result = underTest.displayBlog(1L, mockModel);
-        assertThat(result).isEqualTo("single_review");
+        assertThat(result).isEqualTo("single_blog");
     }
     @Test
     public void shouldBeAbletoRetrieveSingleReview(){
@@ -50,7 +51,7 @@ public class BlogControllerTest {
         when(mockStorage.findById(1L)).thenReturn(Optional.of(blogUndertest));
         mockMvc.perform(MockMvcRequestBuilders.get("/blogs/1"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("single_review"))
+                .andExpect(view().name("single_blog"))
                 .andExpect(model().attributeExists("blog"))
                 .andExpect(model().attribute("blog", blogUndertest));
     }

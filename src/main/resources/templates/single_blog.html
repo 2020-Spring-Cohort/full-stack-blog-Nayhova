@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang= "en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+    <meta name=-"viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title> All Blogs</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+<img class="header-image" src="../img/header.png" alt="header">
+<div id="nav">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="allblogs.html">All Entrys</a></li>
+        <li><a href="hashtags.html">All Hashtags</a></li>
+    </ul>
+</div>
+<!--<div class="movie-review-title">-->
+<!--    <a th:href="@{'/games/' + ${blog.getGameTitleFromBlog()}}">-->
+<!--        <h1 th:text="   ${blog.getGameTitleFromBlog()}">-->
+
+<!--        </h1>-->
+<!--    </a>-->
+<!--    <h2 th:text="'Blog By: ' + ${blog.getAuthor()}"></h2>-->
+<!--</div>-->
+<!--<p th:text="${blog.getComments()}">-->
+
+<!--</p>-->
+<section class="review-detail">
+    <div class="review-detail1">
+
+
+        <h3 th:text="${blog.getAuthor()}"> </h3>
+        <p th:text="${blog.getComments()}">
+
+        </p>
+        <div class="hashtags hashtag-index">
+            <form method = "POST" th:action = "'/reviews/'+ ${blogId} + '/add-hashtag'" >
+                <input type="text" name="hashTag">
+                <button type="submit">Add Hashtag</button>
+            </form>
+            <a th:each="hashtag : ${blog.getHashtags()}"  th:href="@{'/hashtags/' + ${hashtag.hashtag}}">
+                <p th:text="${hashtag.hashtag}">
+                </p>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="review-detail2">
+
+<!--        <img src="../../img/documentary.png" class="review-detail-picture" alt="movie picture">-->
+        <h3 th:text="${blog.getGameTitleFromBlog()}"> </h3>
+
+    </div>
+
+</section>
