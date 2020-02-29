@@ -16,7 +16,7 @@ public class BlogController {
     public String displayBlog(@PathVariable long blogId, Model model) {
         Blog retrievedBlog = blogRepository.findById(blogId).get();
         model.addAttribute("blog", retrievedBlog);
-        return "single_review";
+        return "single_game";
     }
 
     @RequestMapping("/blogs")

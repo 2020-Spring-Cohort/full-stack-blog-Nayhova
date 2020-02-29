@@ -1,12 +1,18 @@
 package org.wcci.blog;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Game {
+
+    public Collection<Blog> getBlogs() {
+        return blogs;
+    }
+
+    @OneToMany(mappedBy = "game")
+    public Collection<Blog> blogs;
+
     @Id
     @GeneratedValue
     public Long id;

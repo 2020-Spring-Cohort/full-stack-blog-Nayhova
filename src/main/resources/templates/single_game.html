@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang= "en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+    <meta name=-"viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title> All Blogs</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+<img class="header-image" src="../img/header.png" alt="header">
+<div id="nav">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="allblogs.html">All Entrys</a></li>
+        <li><a href="hashtags.html">All Hashtags</a></li>
+    </ul>
+
+</div>
+<br>
+<h1 class="header-title"th:text="'All Blogs for: '+ ${game.title}" > </h1>
+<section class="listed-reviews">
+
+    <div class="single-review list-title">
+        <div class="review-title">
+            <h2>Game Title</h2>
+        </div>
+<!--        <div class="review-num-stars">-->
+<!--            <h2>Movie Rating</h2>-->
+<!--        </div>-->
+        <div class="review-date-time">
+            <h2>Review Author</h2>
+        </div>
+        <div class="review-summary">
+            <h2>Blog Description</h2>
+        </div>
+    </div>
+
+
+    <div th:each="blog:${game.blogs}" class="single-review">
+        <div class="review-title">
+            <a th:href="@{'/blogs/'+ ${blog.blogId}}">
+                <p th:text="${blog.getGameTitleFromBlog()}"></p>
+            </a>
+        </div>
+<!--        <div class="review-num-stars">-->
+<!--            <p th:text="${blog.getRating()} + ' out of 5'"> </p>-->
+<!--        </div>-->
+        <div class="review-date-time">
+            <p th:text="${blog.author}"></p>
+        </div>
+        <div class="review-description-summary">
+            <p th:text="${blog.getComments()}">
+            </p>
+        </div>
+    </div>
+    <form class= "single-review" method="POST" th:action="'/games/' + ${game.title} + '/add-blog'">
+
+        <div class="review-title">
+            <a>
+                <p><input name="blogTitle" th:value="${game.title}"></p>
+            </a>
+        </div>
+<!--        <div class="review-num-stars">-->
+<!--            <p><input name="rating" type="text"></p>-->
+<!--        </div>-->
+        <div class="review-date-time">
+            <p><input name="author" type="text"></p>
+        </div>
+        <div class="review-description-summary">
+            <p><textarea name="summary" type="type">
+                         </textarea>
+                <button type="submit">Make A New Review</button>
+
+            </p>
+        </div>
+    </form>
+</section>
+</body>
+
+</html>

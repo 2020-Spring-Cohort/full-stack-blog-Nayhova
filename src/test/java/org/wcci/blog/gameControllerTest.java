@@ -19,6 +19,7 @@ public class gameControllerTest {
     private GameStorage gameStorage;
     private Game testGame;
     private Category testCategory;
+    private BlogStorage blogStorage;
 
     @Test
     public void shouldBeAbleToDisplayEndPointMovie() {
@@ -26,11 +27,11 @@ public class gameControllerTest {
         testGame = new Game("Out Cold", testCategory);
         gameStorage = mock(GameStorage.class);
         model = mock(Model.class);
-        underTest = new GameController(gameStorage);
+        underTest = new GameController(gameStorage, blogStorage);
 
         String result = underTest.displayGame("Out Cold", model);
         when(gameStorage.findGameById(1L)).thenReturn(testGame);
-        assertThat(result).isEqualTo("single_movie");
+        assertThat(result).isEqualTo("single_game");
 
     }
     @Test
@@ -39,13 +40,13 @@ public class gameControllerTest {
         testGame = new Game("Out Cold", testCategory);
         gameStorage = mock(GameStorage.class);
         model = mock(Model.class);
-        underTest = new GameController(gameStorage);
+        underTest = new GameController(gameStorage, blogStorage);
 
         when(gameStorage.findGameByTitle("Out Cold")).thenReturn(testGame);
         underTest.displayGame("Out Cold", model);
 
         verify(gameStorage).findGameByTitle("Out Cold");
-        verify(model).addAttribute("movie", testGame);
+        verify(model).addAttribute("game", testGame);
 
     }
     @Test
@@ -54,16 +55,16 @@ public class gameControllerTest {
         testGame = new Game("Out Cold", testCategory);
         gameStorage = mock(GameStorage.class);
         model = mock(Model.class);
-        underTest = new GameController(gameStorage);
+        underTest = new GameController(gameStorage, blogStorage);
 
         when(gameStorage.findGameByTitle("Out Cold")).thenReturn(testGame);
         MockMvc mockMVC = MockMvcBuilders.standaloneSetup(underTest).build();
 
         mockMVC.perform(MockMvcRequestBuilders.get("/games/Out Cold"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("single_movie"))
-                .andExpect(model().attributeExists("movie"))
-                .andExpect(model().attribute("movie", testGame));
+                .andExpect(view().name("single_game"))
+                .andExpect(model().attributeExists("game"))
+                .andExpect(model().attribute("game", testGame));
 
     }
 }

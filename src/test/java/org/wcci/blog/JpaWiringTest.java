@@ -35,7 +35,7 @@ public class JpaWiringTest {
         Category retrievedCategory = retrievedCategoryOptional.get();
         Game retrievedMovie = gameRepo.findById(testMovie.getId()).get();
 
-        assertThat(retrievedCategory.getMovies()).contains(testMovie);
+        assertThat(retrievedCategory.getGames()).contains(testMovie);
 
     }
 }

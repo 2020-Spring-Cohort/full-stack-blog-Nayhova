@@ -15,7 +15,6 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="allblogs.html">All Entrys</a></li>
             <li><a href="hashtags.html">All Hashtags</a></li>
-            <li><a href="create.html">Create Entry</a></li>
         </ul>
     </div>
 <div id="content">
@@ -23,9 +22,9 @@
         <article th:each="category:${categories}" >
             <h2 class="category-title" ><a th:text="${category.genre}" th:href="@{'/categories/'+ ${category.genre}}">Nintendo</a></h2>
         </article>
-<!--    </div>-->
+    </div>
 <!--    <div class="article column1">-->
-<!--        <p>Super Nintendo</p>-->
+<!--        <h2 >Super Nintendo</h2>-->
 <!--    </div>-->
 <!--    <div class="article column2">-->
 <!--        <p>Sega Dreamcast</p>-->

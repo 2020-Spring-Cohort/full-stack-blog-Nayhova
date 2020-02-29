@@ -22,7 +22,7 @@ public class Blog {
         return blogId;
     }
 
-    public String getGameTitleFromReview(){
+    public String getGameTitleFromBlog(){
         return game.getTitle();
     }
 

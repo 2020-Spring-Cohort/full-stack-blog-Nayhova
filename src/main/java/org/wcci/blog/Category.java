@@ -31,7 +31,7 @@ public class Category {
         return genre;
     }
 
-    public Collection<Game> getMovies() {
+    public Collection<Game> getGames() {
         return games;
     }
 
