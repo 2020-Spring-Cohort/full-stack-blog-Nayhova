@@ -12,19 +12,23 @@
     <img class="header-image" src="img/header.png" alt="header">
     <div id="nav">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="allblogs.html">All Entrys</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blogs">All Blogs</a></li>
             <li><a href="hashtags.html">All Hashtags</a></li>
         </ul>
     </div>
-<div id="content">
-    <div id="feature">
+<!--<div id="content">-->
+<!--    <div id="feature">-->
+        <section class="all-boxes">
         <article th:each="category:${categories}" >
             <h2 class="category-title" ><a th:text="${category.genre}" th:href="@{'/categories/'+ ${category.genre}}">Nintendo</a></h2>
+            <img th:src="@{'img/' + ${category.imgUrl} + '.png'}" th:alt="${category.imgUrl}" class="category-picture">
         </article>
-    </div>
+<!--    </div>-->
 <!--    <div class="article column1">-->
-<!--        <h2 >Super Nintendo</h2>-->
+<!--        <article th:each="category:${categories}" >-->
+<!--            <h2> <a th:text="${category.genre}" th:href="@{'/categories/'+ ${category.genre}}">Super Nintendo</a></h2>-->
+<!--        </article>-->
 <!--    </div>-->
 <!--    <div class="article column2">-->
 <!--        <p>Sega Dreamcast</p>-->
@@ -32,7 +36,7 @@
 <!--    <div class="article column3">-->
 <!--        <p>Sony Playstation</p>-->
 <!--    </div>-->
-</div>
+<!--</div>-->
 
-
+        </section>
 </body>

@@ -27,7 +27,7 @@ public class BlogController {
 
     @RequestMapping("/blogs")
     public String displayBlog(Model model) {
-        model.addAttribute("blog", blogRepository.findAll());
+        model.addAttribute("blogs", blogRepository.findAll());
         return "blogs_multiple";}
 
     @PostMapping("/blogs/{blogId}/add-hashtag")

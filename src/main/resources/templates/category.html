@@ -13,28 +13,31 @@
 <div id="nav">
     <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="allblogs.html">All Entrys</a></li>
+        <li><a href="/blogs">All Blogs</a></li>
         <li><a href="hashtags.html">All Hashtags</a></li>
     </ul>
 </div>
 <h1 th:text="${categories.genre}" class="header-title"> Comedy</h1>
-<div id="content">
-    <div id="feature">
+<!--<div id="content">-->
+<!--    <div id="feature">-->
+<section class="all-boxes">
         <article th:each="game:${categories.games}" >
             <a th:href="@{'/games/'+ ${game.title}}" >
                 <h2 class="category-title" th:text="${game.title}"> </h2>
             </a>
         </article>
-    </div>
+<!--    </div>-->
     <article>
         <form class="add-game" action="/add-game" method="POST">
             <h2>Add Game </h2>
-            <input name="gameName" type="text"> Name
+            <input name="gameName" type="text" placeholder="Name">
             <input name="genre" th:value="${categories.genre}">
             <input name="imgUrl" type="hidden" value="some-value"> <br>
-            <button type="submit">Add A New Game</button>
+            <button type="submit">Submit</button>
 
         </form>
     </article>
 
 </div>
+</section>
+</body>

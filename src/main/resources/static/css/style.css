@@ -94,6 +94,7 @@ li a:hover {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    background-color: #efefef;
 }
 .movie-review-title{
     display: inline;
@@ -101,4 +102,39 @@ li a:hover {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+.all-boxes {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 20px;
+}
+.add-game{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.add-game input{
+    display: block;
+    font-size: 2em;
+}
+article {
+    background-color: #efefef;
+    color: black;
+}
+body {
+    font-family: sans-serif;
+    background-image: url('../img/Games.png');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 2500px;
+}
+.category-picture{
+    margin-left: auto;
+    margin-right: auto;
+}
+.header-title {
+    grid-row: 1;
+    grid-column: 1;
 }

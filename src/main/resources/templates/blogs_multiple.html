@@ -18,8 +18,8 @@
     </ul>
 
 </div>
-<br>
-<h1 class="header-title"th:text="'All Blogs for: '+ ${game.title}" > </h1>
+<h1 class="header-title"> All Blogs </h1>
+
 <section class="listed-reviews">
 
     <div class="single-review list-title">
@@ -30,53 +30,36 @@
 <!--            <h2>Movie Rating</h2>-->
 <!--        </div>-->
         <div class="review-date-time">
-            <h2>Review Author</h2>
+            <h2>Author</h2>
         </div>
         <div class="review-summary">
-            <h2>Blog Description</h2>
+            <h2>Blog</h2>
         </div>
     </div>
 
-
-    <div th:each="blog:${game.blogs}" class="single-review">
+    <div th:each="blog:${blogs}"   class="single-review">
         <div class="review-title">
-            <a th:href="@{'/blogs/'+ ${blog.blogId}}">
+            <a th:href="@{'/blogs/' + ${blog.blogId}}">
                 <p th:text="${blog.getGameTitleFromBlog()}"></p>
             </a>
         </div>
 <!--        <div class="review-num-stars">-->
-<!--            <p th:text="${blog.getRating()} + ' out of 5'"> </p>-->
+<!--            <a th:href="@{'/blogs/' + ${review.reviewId}}">-->
+<!--                <p th:text="${review.getRating()} + ' out of 5'" > </p>-->
+<!--            </a>-->
 <!--        </div>-->
         <div class="review-date-time">
-            <p th:text="${blog.author}"></p>
+            <p th:text="${blog.getAuthor()}"> </p>
         </div>
-        <div class="review-description-summary">
-            <p th:text="${blog.getComments()}">
-            </p>
-        </div>
-    </div>
-    <form class= "single-review" method="POST" th:action="'/games/' + ${game.title} + '/add-blog'">
-
-        <div class="review-title">
-            <a>
-                <p><input name="blogTitle" th:value="${game.title}"></p>
+        <div class="review-summary">
+            <a th:href="@{'/blogs/' + ${blog.blogId}}">
+                <p th:text="${blog.getComments()}">
+                </p>
             </a>
         </div>
-<!--        <div class="review-num-stars">-->
-<!--            <p><input name="rating" type="text"></p>-->
-<!--        </div>-->
-        <div class="review-date-time">
-            <p><input name="author" type="text"></p>
-        </div>
-        <div class="review-description-summary">
-            <p><textarea name="summary" type="type">
-                         </textarea>
-                <button type="submit">Make A New Review</button>
-
-            </p>
-        </div>
-    </form>
+    </div>
 </section>
+
 </body>
 
 </html>
