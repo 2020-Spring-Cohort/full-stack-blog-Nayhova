@@ -138,6 +138,22 @@ body {
     grid-row: 1;
     grid-column: 1;
 }
-.hashtag-area{
+.hashtag-area p{
+    padding: 20px;
+    margin: 10px;
     background-color: #efefef;
+    /*width: 80%;*/
+    /*display: flex;*/
+    /*justify-content: flex-start;*/
+    /*flex-wrap: wrap;*/
 }
+.hashtag-area{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
