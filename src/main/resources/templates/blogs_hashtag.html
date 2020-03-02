@@ -18,7 +18,7 @@
     </ul>
 
 </div>
-<h1 class="header-title"> All Blogs </h1>
+<h1 class="header-title" th:text="'All Blogs With #' + ${hashtagName}"> </h1>
 
 <section class="listed-reviews">
 
@@ -26,9 +26,9 @@
         <div class="review-title">
             <h2>Game Title</h2>
         </div>
-<!--        <div class="review-num-stars">-->
-<!--            <h2>Movie Rating</h2>-->
-<!--        </div>-->
+        <!--        <div class="review-num-stars">-->
+        <!--            <h2>Movie Rating</h2>-->
+        <!--        </div>-->
         <div class="review-date-time">
             <h2>Author</h2>
         </div>
@@ -37,17 +37,17 @@
         </div>
     </div>
 
-    <div th:each="blog:${blogs}"   class="single-review">
+    <div th:each="blog:${singleHashtag.getBlogs()}"   class="single-review">
         <div class="review-title">
-            <a th:href="@{'/blogs/' + ${blog.blogId}}">
+            <a th:href="@{'/games/' + ${blog.getGameTitleFromBlog()}}">
                 <p th:text="${blog.getGameTitleFromBlog()}"></p>
             </a>
         </div>
-<!--        <div class="review-num-stars">-->
-<!--            <a th:href="@{'/blogs/' + ${review.reviewId}}">-->
-<!--                <p th:text="${review.getRating()} + ' out of 5'" > </p>-->
-<!--            </a>-->
-<!--        </div>-->
+        <!--        <div class="review-num-stars">-->
+        <!--            <a th:href="@{'/blogs/' + ${review.reviewId}}">-->
+        <!--                <p th:text="${review.getRating()} + ' out of 5'" > </p>-->
+        <!--            </a>-->
+        <!--        </div>-->
         <div class="review-date-time">
             <p th:text="${blog.getAuthor()}"> </p>
         </div>

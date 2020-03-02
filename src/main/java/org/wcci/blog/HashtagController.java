@@ -19,5 +19,10 @@ public class HashtagController {
         model.addAttribute("allHashtags", hashtagRepository.findAll());
         return "all-hashtags";
     }
-
+    @RequestMapping({"/hashtags/{hashtagName}"})
+    public String showAllBlogsForHashtag(@PathVariable String hashtagName, Model model){
+        Hashtag hashtagToDisplay = hashtagRepository.findHashtagByHashtag(hashtagName).get();
+        model.addAttribute("singleHashtag", hashtagToDisplay);
+        return "blogs_hashtag";
+    }
 }
